@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>Последние выполненные проекты</h2>
+        <div class="row">
+            {% for app in completed_applications %}
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <img src="{{ app.photo.url }}" class="card-img-top" alt="{{ app.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ app.title }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">{{ app.created_at|date:"d.m.Y" }}</small><br>
+                            <span class="badge bg-secondary">{{ app.category.name }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Пока нет выполненных проектов</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Статистика</h5>
+                <p class="card-text">
+                    Заявок в работе: <strong>{{ in_progress_count }}</strong>
+                </p>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create_application' %}" class="btn btn-primary">Создать заявку</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Зарегистрироваться</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
