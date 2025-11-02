@@ -72,7 +72,7 @@
                     {% if user.is_authenticated %}
                         <!-- Меню для авторизованных пользователей -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="{% url 'index' %}">Личный Кабинет</a> <!-- TODO: Заменить на URL ЛК -->
+                            <a class="nav-link text-dark" href="{% url 'index' %}">Личный Кабинет</a>
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-sm btn-outline-secondary me-2" href="{% url 'logout' %}">Выход ({{ user.username }})</a>
