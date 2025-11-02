@@ -1,0 +1,484 @@
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+
+  .main-nav li {
+    margin-left: 20px;
+  }
+  
+  .main-nav a {
+    font-size: 0.85rem;
+  }
+
+  .header-contact a {
+    margin-left: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .header-contact a:first-child {
+    font-size: 0.75rem;
+  }
+  
+  .header-contact a:last-child {
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding-left: 5%;
+  }
+
+  .hero-content {
+    width: 500px;
+    height: 500px;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .hero-nav {
+    right: 3%;
+    gap: 5px;
+  }
+  
+  .arrow {
+    width: 50px;
+    height: 50px;
+  }
+
+  .box {
+    width: 95vw;
+    max-width: 1400px;
+    height: auto;
+    aspect-ratio: 1760 / 700;
+  }
+
+  .product-grid > * {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+
+  .article-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .help-container {
+    max-width: 960px;
+    height: auto;
+  }
+  
+  .help-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+  }
+  
+  .help-form-area {
+    padding: 60px 40px;
+  }
+  
+  .footer-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .header-contact,
+  .catalog-button-wrapper {
+    display: none;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .hero {
+    padding-left: 0;
+    text-align: center;
+    height: auto;
+    margin: 20px 0 30px;
+    padding: 20px 0;
+  }
+
+  .hero-content {
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1/1;
+    margin: 20px auto;
+    padding: 30px 15px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-top: 10%;
+  }
+  
+  .hero-content h2 {
+    font-size: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+    margin-bottom: 15%;
+  }
+  
+  .hero-content .btn-primary {
+    margin: 20px auto 0;
+    display: inline-block;
+  }
+
+  .hero-nav {
+    position: static;
+    margin: 30px auto 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .box {
+    display: none;
+  }
+
+  .info-flex {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .info-block {
+    text-align: center;
+  }
+  
+  .info-block img {
+    margin: 0 auto;
+  }
+
+  .section-tit {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  
+  .articles-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .showcase-tabs ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .showcase-tabs li {
+    flex: 0 0 calc(50% - 5px);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .help-container {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  
+  .help-image img {
+    min-height: 300px;
+    max-height: 400px;
+  }
+  
+  .help-form-area {
+    padding: 40px 20px;
+    background-image: none;
+    background-color: #f8f8f8;
+  }
+  
+  .help-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .help-form input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .articles-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .all-articles-link {
+    margin-top: 0;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .footer-col {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 30px 0;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 0.85rem;
+  }
+  
+  .arrow {
+    width: 45px;
+    height: 45px;
+  }
+
+  .section-tit {
+    font-size: 1.8rem;
+  }
+  
+  .articles-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .showcase-tabs li {
+    flex: 0 0 100%;
+  }
+  
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .product-card {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .product-card img {
+    max-height: 250px;
+    width: auto;
+    margin: 0 auto 10px;
+  }
+  
+  .product-colors {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .color-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .show-all-btn {
+    padding: 15px 0;
+    font-size: 0.9rem;
+  }
+
+  .help-form-area {
+    padding: 30px 15px;
+  }
+  
+  .help-form-area h2 {
+    font-size: 1.8rem;
+  }
+
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .all-articles-link {
+    font-size: 0.9rem;
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .hero-content {
+    max-width: 280px;
+    padding: 20px 10px;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 0.85rem;
+  }
+  
+  .hero-content p {
+    font-size: 0.75rem;
+  }
+  
+  .hero-content .btn-primary {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
+  .section-tit {
+    font-size: 1.6rem;
+  }
+  
+  .articles-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .tab-btn {
+    font-size: 0.8rem;
+    padding: 8px 5px;
+  }
+
+  .product-card h3 {
+    font-size: 1rem;
+  }
+  
+  .product-price {
+    font-size: 1rem;
+  }
+
+  .info-block h2 {
+    font-size: 1.4rem;
+  }
+  
+  .info-block p {
+    font-size: 0.9rem;
+  }
+
+  .help-form-area h2 {
+    font-size: 1.6rem;
+  }
+  
+  .help-form input {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .article-card h3 {
+    font-size: 1rem;
+  }
+
+  .all-articles-link {
+    font-size: 0.8rem;
+    padding: 8px 20px;
+  }
+
+  .footer-col h4 {
+    font-size: 0.9rem;
+  }
+  
+  .footer-col p, 
+  .footer-col a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 1.4rem;
+  }
+  
+  .section-tit,
+  .articles-header h2 {
+    font-size: 1.4rem;
+  }
+  
+  .product-card {
+    padding: 10px;
+  }
+  
+  .help-form-area {
+    padding: 20px 10px;
+  }
+  
+  .help-form-area h2 {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* Адаптивность для текста */
+@media (max-width: 768px) {
+  .info-block {
+    padding: 0 15px;
+  }
+  
+  .info-block h2 {
+    font-size: 1.5rem;
+  }
+  
+  .info-block p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .link-mored {
+    font-size: 0.8rem;
+  }
+
+
+  .info-block p {
+  line-height: 1.6;
+  text-align: justify; /* Выравнивание по ширине */
+  text-justify: inter-word; /* Красивое выравнивание */
+}
+
+/* Или для лучшего контроля */
+.info-block p {
+  line-height: 1.6;
+  text-align: left;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+}
