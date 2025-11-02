@@ -1,0 +1,94 @@
+{% extends 'design_app/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="fw-bold">Управление категориями</h1>
+                <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary">
+                    ← Назад к заявкам
+                </a>
+            </div>
+
+            <!-- Форма добавления категории -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Добавить новую категорию</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Название категории <span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control" placeholder="Например: 3D-дизайн" required maxlength="100">
+                                <div class="form-text">Максимальная длина: 100 символов</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Описание категории</label>
+                                <input type="text" name="description" class="form-control" placeholder="Краткое описание категории" maxlength="255">
+                                <div class="form-text">Необязательное поле</div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" name="add_category" class="btn btn-success">
+                                    ➕ Добавить категорию
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Список категорий -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Существующие категории</h5>
+                </div>
+                <div class="card-body">
+                    {% if categories %}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Описание</th>
+                                    <th>Кол-во заявок</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for category in categories %}
+                                <tr>
+                                    <td class="fw-semibold">{{ category.name }}</td>
+                                    <td>{{ category.description|default:"—" }}</td>
+                                    <td>
+                                        <span class="badge bg-primary fs-6">{{ category.applications_count }}</span>
+                                    </td>
+                                    <td>
+                                        <form method="post" class="d-inline">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="category_id" value="{{ category.id }}">
+                                            <button type="submit" name="delete_category" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Вы уверены, что хотите удалить категорию \"{{ category.name }}\"?{% if category.applications_count > 0 %} Будут удалены все заявки этой категории ({{ category.applications_count }} шт.){% endif %}')">
+                                                🗑️ Удалить
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <p class="text-muted">Категории не найдены</p>
+                        <p class="text-muted">Добавьте первую категорию используя форму выше</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

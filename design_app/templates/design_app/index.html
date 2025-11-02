@@ -6,6 +6,11 @@
         <h1 class="display-4 fw-bold text-dark">Проектируйте мечту с Design.<span style="color: #5593c6;">pro</span></h1>
         <p class="fs-5 text-muted">Ваш личный портал для создания идеального интерьера. Загрузите план — получите дизайн-решения.</p>
         
+        <!-- Счетчик заявок в работе -->
+        <div class="alert alert-info d-inline-block">
+            <h5 class="alert-heading">Заявок в работе: {{ in_progress_count }}</h5>
+        </div>
+
         {% if not user.is_authenticated %}
             <hr class="my-4">
             <p>Начните свой проект прямо сейчас! Пройдите быструю регистрацию, чтобы получить доступ к личному кабинету.</p>
@@ -23,6 +28,33 @@
         {% endif %}
     </div>
 </header>
+
+<!-- Выполненные работы -->
+{% if completed_applications %}
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="text-center mb-4">Последние выполненные работы</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            {% for app in completed_applications %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    {% if app.plan_file %}
+                    <img src="{{ app.plan_file.url }}" class="card-img-top" alt="{{ app.title }}" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ app.title }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">{{ app.category.name }}</small><br>
+                            <small class="text-muted">{{ app.upload_date|date:"d.m.Y" }}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
 
 <!-- Преимущества -->
 <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
