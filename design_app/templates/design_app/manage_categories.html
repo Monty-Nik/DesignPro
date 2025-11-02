@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="fw-bold">Управление категориями</h1>
                 <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary">
-                    ← Назад к заявкам
+                    Назад к заявкам
                 </a>
             </div>
 
@@ -71,7 +71,7 @@
                                             <input type="hidden" name="category_id" value="{{ category.id }}">
                                             <button type="submit" name="delete_category" class="btn btn-sm btn-danger"
                                                     onclick="return confirm('Вы уверены, что хотите удалить категорию \"{{ category.name }}\"?{% if category.applications_count > 0 %} Будут удалены все заявки этой категории ({{ category.applications_count }} шт.){% endif %}')">
-                                                🗑️ Удалить
+                                                Удалить
                                             </button>
                                         </form>
                                     </td>
