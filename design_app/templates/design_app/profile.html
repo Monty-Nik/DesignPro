@@ -37,10 +37,15 @@
 
             <!-- Список заявок -->
             <div class="row">
+
                 {% if room_plans %}
                     {% for plan in room_plans %}
+
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card h-100 shadow-sm">
+                            {% if plan.plan_file %}
+                            <img src="{{ plan.plan_file.url }}" class="card-img-top" alt="{{ plan.title }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">{{ plan.title }}</h5>
                                 <p class="card-text text-muted small">{{ plan.description|truncatewords:15 }}</p>
@@ -50,6 +55,7 @@
                                 </div>
 
                                 <div class="mb-2">
+
                                     <span class="badge
                                         {% if plan.status == 'NEW' %}bg-primary
                                         {% elif plan.status == 'IN_PROGRESS' %}bg-warning
@@ -73,7 +79,7 @@
                             </div>
                             <div class="card-footer bg-transparent">
                                 {% if plan.can_be_deleted %}
-                                <form method="POST" action="{% url 'delete_application' application.id %}" style="display:inline;">
+                                <form method="POST" action="{% url 'delete_room_plan' plan.id %}" style="display:inline;">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirmDelete(event, 'Вы уверены, что хотите удалить заявку №{{ application.id }}? Это действие необратимо.');">

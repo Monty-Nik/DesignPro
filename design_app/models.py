@@ -20,7 +20,6 @@ class Category(models.Model):
 class UserProfile(models.Model):
     USER_TYPES = [
         ('CLIENT', 'Клиент'),
-        ('DESIGNER', 'Дизайнер'),
         ('MANAGER', 'Менеджер'),
         ('ADMIN', 'Администратор'),
     ]
@@ -62,9 +61,6 @@ class UserProfile(models.Model):
     def is_admin(self):
         return self.user_type == 'ADMIN' or self.user.is_staff
 
-    def is_designer(self):
-        return self.user_type == 'DESIGNER'
-
     def is_manager(self):
         return self.user_type == 'MANAGER'
 
@@ -103,7 +99,7 @@ class RoomPlan(models.Model):
         verbose_name="Статус заявки"
     )
 
-    # Поля для администратора/дизайнера
+    # Поля для администратора/менеджера
     design_image = models.ImageField(
         upload_to='designs/',
         blank=True,
