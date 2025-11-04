@@ -4,7 +4,15 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, EmailValidator
 from .models import RoomPlan, Category, UserProfile
 import os
+from django.contrib.auth.forms import PasswordResetForm
 
+class CustomPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'example@mail.ru'
+        })
 
 # Кастомная форма регистрации с валидацией
 class CustomUserCreationForm(UserCreationForm):

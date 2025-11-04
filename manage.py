@@ -15,6 +15,11 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    # Автоматически добавляем порт 8089 если не указан другой
+    if len(sys.argv) == 2 and sys.argv[1] == 'runserver':
+        sys.argv.append('8089')
+
     execute_from_command_line(sys.argv)
 
 

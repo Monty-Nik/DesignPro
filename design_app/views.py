@@ -13,10 +13,9 @@ def is_staff_user(user):
         return False
     try:
         profile = user.userprofile
-        return profile.is_admin() or profile.is_designer() or profile.is_manager()
+        return profile.is_admin() or profile.is_manager()
     except UserProfile.DoesNotExist:
         return user.is_staff
-
 
 # Проверка является ли пользователь администратором
 def is_admin_user(user):
@@ -116,7 +115,6 @@ def logout_user(request):
     logout(request)
     messages.info(request, "Вы вышли из системы.")
     return redirect('index')
-
 
 # Личный кабинет пользователя - ТОЛЬКО для клиентов
 @login_required
