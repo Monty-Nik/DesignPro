@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Абонементная система - OLIMP</title>
+<style>
+     /* Reset and base styles */
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.header__nav {
+    display: flex;
+    list-style: none;
+}
+
+.header__nav-item {
+    margin-right: 30px;
+}
+
+.header__nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.header__nav-link:hover {
+    color: #4CAF50;
+}
+
+.header__social {
+    display: flex;
+    gap: 15px;
+}
+
+.header__social-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+}
+
+/* Hero section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: url('https://placehold.co/1920x600/000/fff?text=Fitness+Background') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero__content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.breadcrumb {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.breadcrumb__item {
+    color: rgba(255,255,255,0.8);
+}
+
+.breadcrumb__separator {
+    color: rgba(255,255,255,0.8);
+    margin: 0 5px;
+}
+
+.breadcrumb__item:last-child {
+    color: white;
+    font-weight: bold;
+}
+
+.hero__title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero__description {
+    font-size: 16px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Plans section */
+.plans {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.plans__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.plan:hover {
+    transform: translateY(-5px);
+}
+
+.plan__image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.plan__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.plan:hover .plan__image img {
+    transform: scale(1.05);
+}
+
+.plan__image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.plan__content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.plan__description {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.plan__features {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.plan__feature {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.plan__feature::before {
+    content: "■";
+    margin-right: 10px;
+    color: #4CAF50;
+}
+
+.plan__price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.plan__price-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+
+.plan__price-period {
+    font-size: 16px;
+    color: #666;
+}
+
+.plan__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn--primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn--primary:hover {
+    background-color: #45a049;
+}
+
+.btn--secondary {
+    background-color: #333;
+    color: white;
+}
+
+.btn--secondary:hover {
+    background-color: #222;
+}
+
+.btn--outline {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.btn--outline:hover {
+    background-color: #f5f5f5;
+}
+
+/* Footer */
+.footer {
+    background-color: #000;
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.footer__logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.footer__nav {
+    display: flex;
+    list-style: none;
+}
+
+.footer__nav-item {
+    margin-right: 30px;
+}
+
+.footer__nav-link {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer__nav-link:hover {
+    color: #4CAF50;
+}
+
+.footer__copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+    color: #999;
+}
+
+.footer__social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer__social-link {
+    color: #ccc;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.footer__social-link:hover {
+    color: #4CAF50;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .hero {
+        height: 400px;
+    }
+
+    .hero__title {
+        font-size: 30px;
+    }
+
+    .plan__image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__inner {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .header__nav {
+        margin: 15px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header__nav-item {
+        margin: 5px 10px;
+    }
+
+    .hero {
+        height: 300px;
+    }
+
+    .hero__title {
+        font-size: 24px;
+    }
+
+    .plans__grid {
+        gap: 20px;
+    }
+
+    .plan__image {
+        height: 200px;
+    }
+
+    .plan__content {
+        padding: 20px;
+    }
+
+    .footer__inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer__nav {
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .footer__nav-item {
+        margin: 5px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .header__nav-item {
+        margin: 5px 8px;
+        font-size: 12px;
+    }
+
+    .hero {
+        height: 250px;
+    }
+
+    .hero__title {
+        font-size: 20px;
+    }
+
+    .plan__image {
+        height: 180px;
+    }
+
+    .plan__content {
+        padding: 15px;
+    }
+
+    .plan__title {
+        font-size: 20px;
+    }
+
+    .plan__actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+<div class="container">
+<div class="header__inner">
+<nav class="header__nav">
+<li class="header__nav-item"><a href="#" class="header__nav-link">Главная</a></li>
+<li class="header__nav-item"><a href="#" class="header__nav-link">Абонементы</a></li>
+<li class="header__nav-item"><a href="#" class="header__nav-link">Услуги</a></li>
+<li class="header__nav-item"><a href="#" class="header__nav-link">Галерея</a></li>
+<li class="header__nav-item"><a href="#" class="header__nav-link">Тренеры</a></li>
+<li class="header__nav-item"><a href="#" class="header__nav-link">Контакты</a></li>
+</nav>
+<div class="header__social">
+<a href="#" class="header__social-link">VK</a>
+<a href="#" class="header__social-link">IG</a>
+<a href="#" class="header__social-link">TG</a>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero__content">
+<div class="breadcrumb">
+<span class="breadcrumb__item">Главная</span>
+<span class="breadcrumb__separator">■</span>
+<span class="breadcrumb__item">Абонементы</span>
+</div>
+<h1 class="hero__title">Абонементная система</h1>
+<p class="hero__description">
+                            Выберите план, который подходит именно вам: от базового доступа к залу до персональных программ с тренером и посещений солярия. Мы не навязываем — мы предлагаем гибкость, комфорт и результат. Начните путь к новой форме уже сегодня.
+</p>
+</div>
+</section>
+
+<!-- Plans Section -->
+<section class="plans">
+<div class="container">
+<div class="plans__grid">
+<!-- Plan 1: Начальный -->
+<div class="plan">
+<div class="plan__image">
+<img src="https://placehold.co/600x400/000/fff?text=Начальный" alt="Начальный">
+<div class="plan__image-overlay">Начальный</div>
+</div>
+<div class="plan__content">
+<h2 class="plan__title">"Начальный"</h2>
+<p class="plan__description">
+                            Этот тарифный план подходит для тех, кто только начинает свою фитнес-историю. Он включает доступ к общим тренировкам, что позволяет заниматься в group-формате под руководством наших тренеров.
+</p>
+<ul class="plan__features">
+<li class="plan__feature">2 консультации тренеров</li>
+<li class="plan__feature">Доступ к общим тренировкам</li>
+<li class="plan__feature">Личный шкафчик</li>
+<li class="plan__feature">1 бесплатное посещение солярия</li>
+</ul>
+<div class="plan__price">
+<span class="plan__price-value">5000 ₽</span>
+<span class="plan__price-period">12 тренировок</span>
+</div>
+<div class="plan__actions">
+<a href="#" class="btn btn--primary">Заказать абонемент</a>
+<a href="#" class="btn btn--secondary">Получить консультацию</a>
+</div>
+</div>
+</div>
+
+<!-- Plan 2: Любитель -->
+<div class="plan">
+<div class="plan__image">
+<img src="https://placehold.co/600x400/000/fff?text=Любитель" alt="Любитель">
+<div class="plan__image-overlay">Любитель</div>
+</div>
+<div class="plan__content">
+<h2 class="plan__title">"Любитель"</h2>
+<p class="plan__description">
+                            Этот тариф предназначен для тех, кто хочет более разнообразное и комфортное занятие спортом.
+</p>
+<ul class="plan__features">
+<li class="plan__feature">4 консультации тренеров</li>
+<li class="plan__feature">Доступ к общим тренировкам</li>
+<li class="plan__feature">Личный шкафчик</li>
+<li class="plan__feature">5 бесплатных посещения солярия</li>
+</ul>
+<div class="plan__price">
+<span class="plan__price-value">10 000 ₽</span>
+<span class="plan__price-period">12 тренировок</span>
+</div>
+<div class="plan__actions">
+<a href="#" class="btn btn--primary">Заказать абонемент</a>
+<a href="#" class="btn btn--outline">Получить консультацию</a>
+</div>
+</div>
+</div>
+
+<!-- Plan 3: Профессионал -->
+<div class="plan">
+<div class="plan__image">
+<img src="https://placehold.co/600x400/000/fff?text=Профессионал" alt="Профессионал">
+<div class="plan__image-overlay">Профессионал</div>
+</div>
+<div class="plan__content">
+<h2 class="plan__title">"Профессионал"</h2>
+<p class="plan__description">
+                            Этот пакет создан для тех, кто серьезно относится к своему фитнесу и хочет максимально использовать все возможности клуба.
+</p>
+<ul class="plan__features">
+<li class="plan__feature">10 консультаций тренеров</li>
+<li class="plan__feature">Доступ к общим тренировкам</li>
+<li class="plan__feature">Личный шкафчик</li>
+<li class="plan__feature">10 бесплатных посещений солярия</li>
+<li class="plan__feature">Бесплатная вода</li>
+</ul>
+<div class="plan__price">
+<span class="plan__price-value">15 000 ₽</span>
+<span class="plan__price-period">12 тренировок</span>
+</div>
+<div class="plan__actions">
+<a href="#" class="btn btn--primary">Заказать абонемент</a>
+<a href="#" class="btn btn--outline">Получить консультацию</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<div class="footer__inner">
+<div class="footer__logo">OLIMP</div>
+<nav class="footer__nav">
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Абонементы</a></li>
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Услуги</a></li>
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Расписание</a></li>
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Сертификаты</a></li>
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Тренеры</a></li>
+<li class="footer__nav-item"><a href="#" class="footer__nav-link">Контакты</a></li>
+</nav>
+<div class="footer__social">
+<a href="#" class="footer__social-link">VK</a>
+<a href="#" class="footer__social-link">IG</a>
+<a href="#" class="footer__social-link">TG</a>
+</div>
+</div>
+<div class="footer__copyright">
+                              ©Olimp 2025. Все права защищены.
+</div>
+</div>
+</footer>
+</body>
+</html>
+

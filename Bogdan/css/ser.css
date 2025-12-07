@@ -1,0 +1,429 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Общий контейнер */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================= HEADER ================= */
+.header {
+    background: #ffffff;
+    padding: 25px 0;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 35px;
+}
+
+.nav__link {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000000;
+    letter-spacing: 0.5px;
+}
+
+.nav__link--active {
+    color: #555555; /* Визуально в макете активная ссылка чуть отличается */
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.socials__icon {
+    font-size: 14px;
+    font-weight: 900;
+    color: #000000;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    position: relative;
+    height: 480px;
+    background-image: url('../img/first_screen.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero__overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.breadcrumbs {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+.breadcrumbs__separator {
+    font-size: 8px;
+    margin: 0 8px;
+    vertical-align: middle;
+}
+
+.hero__title {
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 150px;
+    color: #dddddd;
+}
+
+/* ================= TARIFFS ================= */
+.tariffs {
+    padding: 100px 0;
+}
+
+.tariff {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 120px;
+}
+
+.tariff:last-child {
+    margin-bottom: 0;
+}
+
+/* Модификатор для зеркального отображения (Любитель) */
+.tariff--reverse {
+    flex-direction: row-reverse;
+}
+
+.tariff__content {
+    width: 45%;
+    padding-right: 20px;
+}
+
+.tariff--reverse .tariff__content {
+    padding-right: 0;
+    padding-left: 20px;
+}
+
+.tariff__title {
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.tariff__desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #444444;
+    margin-bottom: 30px;
+}
+
+.tariff__list {
+    margin-bottom: 35px;
+}
+
+/* Сетка для списка в "Профессионал" */
+.tariff__list--grid {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}
+
+.tariff__list--grid .tariff__item {
+    width: 50%;
+}
+
+.tariff__item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+/* Квадратный маркер */
+.tariff__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 4px;
+    background-color: #000000;
+}
+
+.tariff__price-row {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.tariff__price {
+    font-size: 22px;
+}
+
+.tariff__details {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.tariff__label{
+    margin-bottom: -40px;
+    width: 510px;
+    height: 100px;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Иконка "блин штанги" (кружок с точкой) */
+.tariff__icon-weight {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: #555555;
+    border-radius: 50%;
+    position: relative;
+}
+
+.tariff__icon-weight::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 2px;
+    background-color: #ffffff;
+}
+
+.tariff__buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- КНОПКИ --- */
+.btn {
+    border: none;
+    padding: 15px 22px;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn--lime {
+    background-color: rgba(190, 254, 41, 1); /* Ярко-салатовый как на макете */
+    color: rgba(30, 30, 30, 1);
+}
+
+.btn--black {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.btn--grey {
+    background-color: #EEEEEE;
+    color: #1a1a1a;
+}
+
+/* --- ИЗОБРАЖЕНИЯ --- */
+.tariff__visual {
+    width: 50%;
+    height: 600px;
+    position: relative;
+    background-color: #000;
+}
+
+.tariff__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; /* Затемнение картинки */
+    display: block;
+}
+
+.tariff__label {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+.footer {
+    width: 100%;
+    /* Верхняя граница как на картинке */
+    border-top: 1px solid #b3b3b3;
+    margin-top: 80px;
+    background-color: #fff;
+}
+
+/* --- ВЕРХНЯЯ ЧАСТЬ (БЕЛАЯ) --- */
+.footer__top {
+    background-color: #ffffff;
+    padding: 35px 0;
+}
+
+.footer__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.footer__logo {
+    font-size: 24px;
+    font-weight: 800; /* Жирный шрифт как на картинке */
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Навигация */
+.footer__nav {
+    display: flex;
+    gap: 40px; /* Большой отступ между пунктами */
+}
+
+.footer__link {
+    font-size: 11px;
+    font-weight: 700;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+}
+
+.footer__link:hover {
+    color: #888;
+}
+
+/* --- НИЖНЯЯ ЧАСТЬ (ЧЕРНАЯ) --- */
+.footer__bottom {
+    background-color: #000000;
+    padding: 18px 0; /* Узкая полоска */
+}
+
+/* Модификатор для выравнивания в черной полосе */
+.footer__row--small {
+    /* Наследует flex от footer__row */
+}
+
+.footer__copyright {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* Социальные иконки */
+.footer__socials {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
+
+/* Адаптив для футера */
+@media (max-width: 768px) {
+    .footer__row {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer__nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer__row--small {
+        flex-direction: column-reverse; /* Копирайт вниз на мобилках */
+        gap: 15px;
+    }
+}
